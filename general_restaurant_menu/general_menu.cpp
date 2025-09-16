@@ -20,6 +20,7 @@ int main()
     vector<vector<string>> dishToppings; // All Toppings for each dish
     // Using this to store the current toping for each cuisine
     vector<string> currentToppings;
+    // #I will add a bool that checks if a topping was chosen, this starts with a false value( meaning no topping was chosen)
     bool toppingChosen = false;
 
     // From here the program is asking the user to select a cuisine, dish, and toppings
@@ -43,6 +44,7 @@ int main()
             }
             else
             {
+                // This will only run if the IF condition fails
                 cout << "Invalid cuisine choice, please try again." << endl;
             }
         } while (true);
@@ -52,7 +54,7 @@ int main()
 
         case 1:
         {
-            // Resettings the toppings for each dish
+            // Resetting the toppings for each dish
             currentToppings.clear();
             toppingChosen = false;
 
@@ -66,7 +68,7 @@ int main()
             // dish retry loop
             do
             {
-                cout << "select your dish: ";
+                cout << "select your dish (1-3): ";
                 cin >> dishChoice;
                 if (dishChoice >= 1 && dishChoice <= 3)
                 {
@@ -82,14 +84,10 @@ int main()
             // Asks the user if they want to add toppings
             cout << "Would you like to add toppings? (1 for Yes, 0 for No): ";
             cin >> decision;
-            // #I will add a bool that checks if a topping was chosen, this starts with a false value( meaning no topping was chosen)
 
             if (!decision)
             {
                 cout << "No toppings added." << endl;
-                cout << "You have Bought " << italianDishes[dishChoice - 1] << endl;
-                cout << "Enjoy your meal!" << endl;
-                return 0;
             }
             while (decision)
             {
@@ -98,6 +96,7 @@ int main()
                 {
                     cout << i + 1 << ". " << italianToppings[i] << endl;
                 }
+                // Loop to retry toppings
                 do
                 {
                     cout << "Select your topping: ";
@@ -106,6 +105,7 @@ int main()
                     {
                         currentToppings.push_back(italianToppings[toppingChoice - 1]);
                         cout << "you have selected " << italianToppings[toppingChoice - 1] << endl;
+                        toppingChosen = true; // This means that a topping was chosen.
                         break;
                     }
                     else
@@ -113,8 +113,10 @@ int main()
                         cout << "Invalid topping choice, please try again." << endl;
                     }
                 } while (true);
+                // This will now show the current toppings chosen and ask if the user wants to add more toppings
                 cout << "Would you like to add another topping? (1 for Yes, 0 for No): ";
                 cin >> decision;
+                // This will now show the topping summary
                 if (!toppingChosen)
                 {
                     cout << "No toppings were selected by you. Enjoy your meal!" << endl;
@@ -128,18 +130,40 @@ int main()
                     }
                     cout << endl;
                 }
-
-                cout << "You have Bought " << italianDishes[dishChoice - 1] << " with " << italianToppings[toppingChoice - 1] << endl;
-                cout << "Enjoy your meal!" << endl;
-
-                break;
-
-            default:
-                cout << "Invalid cuisine choice." << endl;
+                dishToppings.push_back(currentToppings);
                 break;
             }
         }
         }
+        // Now i will show the final summary of the order
+        cout << "Your final order summary:" << endl;
+        if (orderedDishes.empty())
+        {
+            cout << "No dishes were ordered." << endl;
+        }
+        else
+        {
+            for (size_t i = 0; i < orderedDishes.size(); ++i)
+            {
+                cout << i + 1 << ". Dish: " << orderedDishes[i] << endl;
+                if (i < dishToppings.size() && !dishToppings[i].empty())
+                {
+                    cout << "   Toppings: ";
+                    for (size_t j = 0; j < dishToppings[i].size(); ++j)
+                    {
+                        cout << dishToppings[i][j];
+                        if (j + 1 < dishToppings[i].size())
+                            cout << ", ";
+                    }
+                    cout << endl;
+                }
+                else
+                {
+                    cout << "   No toppings selected." << endl;
+                }
+            }
+        }
+        cout << "Thank you for using the General Restaurant Menu System. Enjoy your meal!" << endl;
         return 0;
     }
 }
