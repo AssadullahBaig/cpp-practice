@@ -76,8 +76,19 @@ int main()
             } while (true);
 
             // Topping selection
-            cout << "Would you like to add toppings? (1 for Yes, 0 for No): ";
-            cin >> decision;
+            do
+            {
+                cout << "Would you like to add toppings? (1 for Yes, 0 for No): ";
+                cin >> decision;
+                if (decision == 0 || decision == 1)
+                {
+                    break;
+                }
+                else
+                {
+                    cout << "Invalid choice! Please enter 1 for Yes or 0 for No." << endl;
+                }
+            } while (true);
 
             while (decision)
             {
@@ -105,8 +116,19 @@ int main()
                 } while (true);
 
                 // Ask if they want another topping
-                cout << "Would you like to add another topping? (1 for Yes, 0 for No): ";
-                cin >> decision;
+                do
+                {
+                    cout << "Would you like to add another topping? (1 for Yes, 0 for No): ";
+                    cin >> decision;
+                    if (decision == 0 || decision == 1)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        cout << "Invalid choice! Please enter 1 for Yes or 0 for No." << endl;
+                    }
+                } while (true);
             }
             break;
         }
@@ -136,8 +158,19 @@ int main()
             } while (true);
 
             // Topping selection
-            cout << "Would you like to add toppings? (1 for Yes, 0 for No): ";
-            cin >> decision;
+            do
+            {
+                cout << "Would you like to add toppings? (1 for Yes, 0 for No): ";
+                cin >> decision;
+                if (decision == 0 || decision == 1)
+                {
+                    break;
+                }
+                else
+                {
+                    cout << "Invalid choice! Please enter 1 for Yes or 0 for No." << endl;
+                }
+            } while (true);
 
             while (decision)
             {
@@ -196,8 +229,19 @@ int main()
             } while (true);
 
             // Topping selection
-            cout << "Would you like to add toppings? (1 for Yes, 0 for No): ";
-            cin >> decision;
+            do
+            {
+                cout << "Would you like to add toppings? (1 for Yes, 0 for No): ";
+                cin >> decision;
+                if (decision == 0 || decision == 1)
+                {
+                    break;
+                }
+                else
+                {
+                    cout << "Invalid choice! Please enter 1 for Yes or 0 for No." << endl;
+                }
+            } while (true);
 
             while (decision)
             {
@@ -253,8 +297,19 @@ int main()
         }
 
         // Ask if they want to order another dish
-        cout << "Would you like to order another dish? (1 for Yes, 0 for No): ";
-        cin >> orderMore;
+        do
+        {
+            cout << "Would you like to order another dish? (1 for Yes, 0 for No): ";
+            cin >> orderMore;
+            if (orderMore == 0 || orderMore == 1)
+            {
+                break;
+            }
+            else
+            {
+                cout << "Invalid choice! Please enter 1 for Yes or 0 for No." << endl;
+            }
+        } while (true);
     }
 
     // Final order summary
